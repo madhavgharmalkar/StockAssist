@@ -13,21 +13,47 @@
 		<!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
+		<link rel="import" href="../../../paper-styles/paper-styles.html">
+    <link rel="import" href="../../neon-animated-pages.html">
+    <link rel="import" href="../../neon-animations.html">
+    <link rel="import" href="full-page.html">
+
+    <style>
+      body {
+        overflow: hidden;
+      }
+    </style>
+
 	</head>
 	
-	<body>
+	<body class="fullbleed relative">
 	<div class="container">
 			<section class="content bgcolor-1">
 				<h2><img src="StockAssist.png" width="5%"> StockAssist</h2>
 				<span class="input input--fumi">
-					<input class="input__field input__field--fumi" type="text" id="input-23" />
+
+		<form autocomplete = "on" name="myForm" onsubmit="return validateForm()">
+					<input class="input__field input__field--fumi" type="text" id="input-23"/>
+
 					<label class="input__label input__label--fumi" for="input-23">
 						<i class="fa fa-fw fa fa-search icon icon--fumi"></i>
 						<span class="input__label-content input__label-content--fumi">Stock Name</span>
 					</label>
+					
+		</form>
 				</span>
 			</section>
 		</div><!-- /container -->
+
+    <full-page class="fit"></full-page>
+
+    <script>
+
+      document.addEventListener('WebComponentsReady', function() {
+        document.querySelector('full-page').show();
+      });
+
+    </script>
 		<script src="js/classie.js"></script>
 		<script>
 			(function() {
@@ -63,6 +89,14 @@
 					}
 				}
 			})();
+
+		function validateForm() {
+		    var x = document.forms["myForm"]["fname"].value;
+		    if (x != "Apple") {
+		        alert("Name must be a stock");
+		        return false;
+		    }
+		}
 		</script>
 	</body>
 </html>
