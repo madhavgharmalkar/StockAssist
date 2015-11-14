@@ -4,6 +4,31 @@
 <head>
 	<title>Madhav is bae</title>
 	<script>
+
+		var jsonCircles = [
+		  { "x_axis": 800, "y_axis": 300, "radius": 10, "color" : "red" },
+		  { "x_axis": 800, "y_axis": 340, "radius": 10, "color" : "orange"},
+		  { "x_axis": 800, "y_axis": 380, "radius": 10, "color" : "yellow"},
+		  { "x_axis": 800, "y_axis": 420, "radius": 10, "color" : "green"},
+		  { "x_axis": 800, "y_axis": 460, "radius": 10, "color" : "blue"},
+		  { "x_axis": 800, "y_axis": 500, "radius": 10, "color" : "purple"}];
+
+		var svgContainer = d3.select("body").append("svg")
+                                    .attr("width", 2000)
+                                    .attr("height", 1000);
+
+		var circles = svgContainer.selectAll("circle")
+                          .data(jsonCircles)
+                          .enter()
+                          .append("circle");
+
+         var circleAttributes = circles
+                       .attr("cx", function (d) { return d.x_axis; })
+                       .attr("cy", function (d) { return d.y_axis; })
+                       .attr("r", function (d) { return d.radius; })
+                       .attr("fill-opacity", .7)
+                       .style("fill", function(d) { return d.color; });
+
 		function validateForm() {
 		    var x = document.forms["myForm"]["fname"].value;
 		    if (x != "Apple") {
@@ -11,6 +36,20 @@
 		        return false;
 		    }
 		}
+
+		
+		d3.select("#input").on("input", function() {
+		  update(+this.value);
+		});
+
+		function update(input){
+			d3.selectAll("circle").transition() 
+				      .delay(function(d, i) { return i * 300 })
+				      .duration(600)    
+				      .attr("transform","translate(-500)")
+				      .ease("elastic"); 
+		}
+
 
 	</script>
 	<style>
@@ -24,8 +63,6 @@
 			width: 20%;
 			top: 40%;
 			padding: 0px;
-			/*border-style: solid;
-    		border-color: #ff0000 #0000ff;*/
 		}
 		img{
 			width: 50px;
@@ -51,7 +88,7 @@
 		<form autocomplete = "on" name="myForm" onsubmit="return validateForm()">
 			
 				<img src = "stockAssist.png">
-				<input type="text" name="fname">
+				<input type="text" name="fname" id = "input">
 			
 		</form>
 	</div>
