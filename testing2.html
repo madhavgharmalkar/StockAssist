@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+
 	<head>
 		<title>StockAssist</title>
 
@@ -13,6 +13,8 @@
 		<!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 	</head>
 	
 	<body>
@@ -30,12 +32,17 @@
 				</span>
 			</section>
 		</div><!-- /container -->
+
 		<script src="js/classie.js"></script>
 		<script>
 			function confirmInput() {
-    fname = document.forms[0].fname.value;
-    alert("Hello " + fname + "! You will now be redirected to www.w3Schools.com");
-}
+    			fname = document.forms[0].fname.value;
+    			d3.selectAll("circle").transition() 
+				      .delay(function(d, i) { return i * 300 })
+				      .duration(600)    
+				      .attr("transform","translate(0,-300)")
+				      .ease("elastic"); 
+			}
 
 
 			(function() {
@@ -73,4 +80,33 @@
 			})();
 		</script>
 	</body>
-</html>
+
+	<script>
+var jsonCircles = [
+		  { "x_axis": 300, "y_axis": 500, "radius": 100, "color" : "red" },
+		  { "x_axis": 600, "y_axis": 500, "radius": 100, "color" : "orange"},
+		  { "x_axis": 900, "y_axis": 500, "radius": 100, "color" : "yellow"}];
+
+		var svgContainer = d3.select("body").append("svg")
+                                    .attr("width", 1500)
+                                    .attr("height", 500);
+
+		var circles = svgContainer.selectAll("circle")
+                          .data(jsonCircles)
+                          .enter()
+                          .append("circle");
+
+         var circleAttributes = circles
+                       .attr("cx", function (d) { return d.x_axis; })
+                       .attr("cy", function (d) { return d.y_axis; })
+                       .attr("r", function (d) { return d.radius; })
+                       .attr("fill-opacity", .7)
+                       .style("fill", function(d) { return d.color; });
+
+            d3.selectAll("circle").transition() 
+				      .delay(function(d, i) { return i * 300 })
+				      .duration(600)    
+				      .attr("transform","translate(0,-300)")
+				      .ease("elastic"); 
+
+	</script>
