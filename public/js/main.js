@@ -11,6 +11,8 @@ jQuery(document).ready(function($) {
 		.done(function(data) {
 			console.log(data);
 
+			$("#prediction").text(data.prediction);
+			
 			var options = {};
 			var data = [
 				{
@@ -31,9 +33,9 @@ jQuery(document).ready(function($) {
 			var myPieChart = new Chart(ctx).Doughnut(data,options);
 			myPieChart.update();
 
-			$("#prediction").text(data.prediction);
-			$("#good").text(data.positive);
-			$("#bad").text(data.negative);
+
+			// $("#good").text(data.positive);
+			// $("#bad").text(data.negative);
 		})
 		.fail(function() {
 			console.log("error");
