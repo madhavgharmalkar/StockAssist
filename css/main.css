@@ -18,17 +18,9 @@ body {
 	width: 100%;
 	background-color: #bdc3c7;
 }
-#title{
+.container{
 	position: relative;
-	top: 20vh;
+	top: 20%;
 }
 
-#input {
-	top: 15vh;
-	position: relative;
-}
-
-#click_row {
-
-}
 
