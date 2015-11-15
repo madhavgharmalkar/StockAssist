@@ -15,11 +15,11 @@ jQuery(document).ready(function($) {
 			$("#twoThirds")
 			.transition({height: "50vh"});
 			$("#oneThird")
-			.transition({display: block})
+			.transition({display: "block"})
 			.transition({height: "50vh"});
 
-			$("#left-bottom").transition({display: block});
-			$("#right-bottom").transition({display: block});
+			$("#left-bottom").transition({display: "block"});
+			$("#right-bottom").transition({display: "block"});
 
 
 			console.log(data);
