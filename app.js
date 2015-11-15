@@ -67,9 +67,9 @@ app.get("/twitter", function(req ,res){
 		var prediction = "";
 
 		if((positive-negative)>(.33	*(positive+negative))){
-			prediction += "You should buy this stock. Current tweets show that people around the world are interested and excited in this porduct.";
+			prediction += "You should buy this stock. Current tweets show that people around the world are interested and excited in this company and its products.";
 		} else if ((negative-positive)>(.10*(positive+negative))){
-			prediction += "You should sell this stock. Current tweets show that people pessimistic about this company and it's prodcuts.";
+			prediction += "You should sell this stock. Current tweets show that people pessimistic about this company and it's products.";
 		} else {
 			prediction += "Just sit tight and hold on to your stock"
 		} 
