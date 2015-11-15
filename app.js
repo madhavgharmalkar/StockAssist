@@ -1,7 +1,6 @@
 var express = require('express');
 var http = require('http');
 var regex = require('regex');
-// var request = require('request');
 var sentiment = require('sentiment');
 var app = express();
 
@@ -36,12 +35,10 @@ app.get('/nyt', function(req, res) {
 		qs: {q: req.query.q, 'key2': 'yyy'}
 	}
 
-
-
 });
 
 app.get("/twitter", function(req ,res){
-	client.get('search/tweets', {q: req.query.q, lang: "en", count: 100000}, function(error, tweets, response){
+	client.get('search/tweets', {q: req.query.q, lang: "en", count: 1000}, function(error, tweets, response){
 		results = [];
 
 		var positive = 0; var negative = 0; var probs = 0;
