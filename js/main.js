@@ -4,8 +4,7 @@ jQuery(document).ready(function($) {
 	$("#click").click(function(event) {
 		$.ajax({
 			url: "http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(),
-			type: 'GET',
-			datatype, "JSONP"
+			type: 'GET'
 		})
 		.done(function() {
 			console.log("success");
