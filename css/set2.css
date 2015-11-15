@@ -86,7 +86,7 @@
 	background: transparent;
 	padding: 1.5em 1em 0.25em 3.15em;
 	width: 100%;
-	color: #53C710;
+	color: #26a69a;
 }
 
 .input__label--fumi {
@@ -215,6 +215,6 @@
 		opacity: 1;
 		-webkit-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
-		color: #53C710;
+		color: #26a69a;
 	}
 }
