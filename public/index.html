@@ -75,167 +75,184 @@
 
 <script>
 //all the json data
-// var jsonLines = [
-// { "x1": 50, "y1": 50, "x2": 50, "y2": 350, "id": ""},
-// { "x1": 50, "y1": 350, "x2": 350, "y2": 350, "id": ""},
-// { "x1": 900, "y1": 550, "x2": 900, "y2": 750, "id": ""},
-// { "x1": 900, "y1": 750, "x2": 1200, "y2": 750, "id": ""},
+var jsonLines = [
+{ "x1": 50, "y1": 50, "x2": 50, "y2": 350, "id": ""},
+{ "x1": 50, "y1": 350, "x2": 350, "y2": 350, "id": ""},
+{ "x1": 900, "y1": 550, "x2": 900, "y2": 750, "id": ""},
+{ "x1": 900, "y1": 750, "x2": 1200, "y2": 750, "id": ""},
 
-// { "x1": 50, "y1": 350, "x2": 110, "y2": 350, "id": "graph"},
-// { "x1": 110, "y1": 350, "x2": 170, "y2": 350, "id": "graph"},
-// { "x1": 170, "y1": 350, "x2": 230, "y2": 350, "id": "graph"},
-// { "x1": 230, "y1": 350, "x2": 290, "y2": 350, "id": "graph"},
-// { "x1": 290, "y1": 350, "x2": 350, "y2": 350, "id": "graph"},
+{ "x1": 50, "y1": 350, "x2": 110, "y2": 350, "id": "graph"},
+{ "x1": 110, "y1": 350, "x2": 170, "y2": 350, "id": "graph"},
+{ "x1": 170, "y1": 350, "x2": 230, "y2": 350, "id": "graph"},
+{ "x1": 230, "y1": 350, "x2": 290, "y2": 350, "id": "graph"},
+{ "x1": 290, "y1": 350, "x2": 350, "y2": 350, "id": "graph"},
 
-// { "x1": 625, "y1": 500, "x2": 500, "y2": 300, "id": "needle"}];
+{ "x1": 625, "y1": 500, "x2": 500, "y2": 300, "id": "needle"}];
 
-// var jsonRect = [
-// { "x": 920, "y": 750, "width": 30, "height": 0, "color" : "red" },
-// { "x": 1020, "y": 750, "width": 30, "height": 0, "color" : "red" },
-// { "x": 1120, "y": 750, "width": 30, "height": 0, "color" : "red" }];
+var jsonRect = [
+{ "x": 920, "y": 745, "width": 50, "height": 0, "color" : "#26a69a" },
+{ "x": 1020, "y": 745, "width": 50, "height": 0, "color" : "#adebe7" },
+{ "x": 1120, "y": 745, "width": 50, "height": 0, "color" : "#1e7b75" }];
 
-// var jsonText = [
-// { "x": 100, "y": 400, "text": "Stock History"},
-// { "x": 920, "y": 780, "text": "Good"},
-// { "x": 1020, "y": 780, "text": "Neutral"},
-// { "x": 1120, "y": 780, "text": "Bad"},
-// { "x": 500, "y": 500, "text": "Buy"},
-// { "x": 700, "y": 500, "text": "Sell"},
-// { "x": 900, "y": 100, "text": "Good Words"},
-// { "x": 200, "y": 500, "text": "Bad Words"}];
+var jsonText = [
+{ "x": 100, "y": 400, "text": "Stock History"},
+{ "x": 920, "y": 780, "text": "Good"},
+{ "x": 1020, "y": 780, "text": "Neutral"},
+{ "x": 1120, "y": 780, "text": "Bad"},
+{ "x": 500, "y": 500, "text": "Buy"},
+{ "x": 700, "y": 500, "text": "Sell"},
+{ "x": 900, "y": 100, "text": "Good Words"},
+{ "x": 200, "y": 500, "text": "Bad Words"}];
 
-// var jsonCircles = [
-// { "x_axis": 615, "y_axis": 420, "radius": 150}];
+var jsonCircles = [
+{ "x_axis": 615, "y_axis": 420, "radius": 150}];
 
 
-// //creating the svg and binding everything to it
-// var data;
+//creating the svg and binding everything to it
+var data;
 
-// var svgContainer = d3.select("body").append("svg")
-// .attr("width", 1300)
-// .attr("height", 800)
-// .attr("id","hi");
+var svgContainer = d3.select("body").append("svg")
+.attr("width", 1300)
+.attr("height", 800)
+.attr("id","hi");
 
-// var lines = svgContainer.selectAll("line")
-// .data(jsonLines)
-// .enter()
-// .append("line");
+var lines = svgContainer.selectAll("line")
+.data(jsonLines)
+.enter()
+.append("line");
 
-// var rects = svgContainer.selectAll("rect")
-// .data(jsonRect)
-// .enter()
-// .append("rect");
+var rects = svgContainer.selectAll("rect")
+.data(jsonRect)
+.enter()
+.append("rect");
 
-// var texts = svgContainer.selectAll("text")
-// .data(jsonText)
-// .enter()
-// .append("text");
+var texts = svgContainer.selectAll("text")
+.data(jsonText)
+.enter()
+.append("text");
 
-// var circles = svgContainer.selectAll("circle")
-// .data(jsonCircles)
-// .enter()
-// .append("circle");
+var circles = svgContainer.selectAll("circle")
+.data(jsonCircles)
+.enter()
+.append("circle");
 
-// //loading all the attributes to the objects
-// var lineAttributes = lines
-// .attr("x1", function (d) { return d.x1; })
-// .attr("y1", function (d) { return d.y1; })
-// .attr("x2", function (d) { return d.x2; })
-// .attr("y2", function (d) { return d.y2; })
-// .attr("stroke-width", 2)
-// .attr("stroke", "black");
+//loading all the attributes to the objects
+var lineAttributes = lines
+.attr("x1", function (d) { return d.x1; })
+.attr("y1", function (d) { return d.y1; })
+.attr("x2", function (d) { return d.x2; })
+.attr("y2", function (d) { return d.y2; })
+.attr("stroke-width", 2)
+.attr("stroke", "#808080");
 
-// var rectAttributes = rects
-// .attr("x", function (d) { return d.x; })
-// .attr("y", function (d) { return d.y; })
-// .attr("width", function (d) { return d.width; })
-// .attr("height", function (d) { return d.height; })
-// .attr("fill", function (d) { return d.color; });
+var rectAttributes = rects
+.attr("x", function (d) { return d.x; })
+.attr("y", function (d) { return d.y; })
+.attr("width", function (d) { return d.width; })
+.attr("height", function (d) { return d.height; })
+.attr("fill", function (d) { return d.color; });
 
-// var textLabels = texts
-// .attr("x", function(d) { return d.x; })
-// .attr("y", function(d) { return d.y; })
-// .text( function (d) { return d.text; })
-// .attr("font-family", "sans-serif")
-// .attr("font-size", "20px")
-// .attr("fill", "black");
+var textLabels = texts
+.attr("x", function(d) { return d.x; })
+.attr("y", function(d) { return d.y; })
+.text( function (d) { return d.text; })
+.attr("font-family", "sans-serif")
+.attr("font-size", "20px")
+.attr("fill", "#808080");
 
-// var circleAttributes = circles
-// .attr("cx", function (d) { return d.x_axis; })
-// .attr("cy", function (d) { return d.y_axis; })
-// .attr("r", function (d) { return d.radius; })
-// .attr("fill-opacity", 0)
-// .attr("stroke-width", 2)
-// .attr("stroke", "black");
+var circleAttributes = circles
+.attr("cx", function (d) { return d.x_axis; })
+.attr("cy", function (d) { return d.y_axis; })
+.attr("r", function (d) { return d.radius; })
+.attr("fill-opacity", 0)
+.attr("stroke-width", 2)
+.attr("stroke", "#808080");
 
-// var words = ["hello", "there", "you"];
+var words = ["hello", "there", "you"];
 
 //what happens when you click the lookup button
-// $("#click").click(function(event) {
-// 	console.log("hello");
+$("#click").click(function(event) {
+	console.log("hello");
+jsonLines = [
+{ "x1": 50, "y1": 50, "x2": 50, "y2": 350, "id": ""},
+{ "x1": 50, "y1": 350, "x2": 350, "y2": 350, "id": ""},
+{ "x1": 900, "y1": 550, "x2": 900, "y2": 750, "id": ""},
+{ "x1": 900, "y1": 750, "x2": 1200, "y2": 750, "id": ""},
 
-// 	//getting the json request, putting it in data
-// 	d3.json("http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(), function(error, json) {
-// 		if (error) return console.warn(error);
-// 		data = json;
-// 		console.log(data);
-// 		visualizeit();
-// 	});
+{ "x1": 50, "y1": 350, "x2": 110, "y2": 350, "id": "graph"},
+{ "x1": 110, "y1": 350, "x2": 170, "y2": 350, "id": "graph"},
+{ "x1": 170, "y1": 350, "x2": 230, "y2": 350, "id": "graph"},
+{ "x1": 230, "y1": 350, "x2": 290, "y2": 350, "id": "graph"},
+{ "x1": 290, "y1": 350, "x2": 350, "y2": 350, "id": "graph"},
 
-// 	//doing transitions for the charts
-// 	d3.selectAll("rect").transition()       
-// 	.delay(400)
-// 	.duration(600)    
-// 	.attr("height",function(d,i){return (i+1)*50;})
-// 	.attr("y", function(d,i){return d.y-((i+1)*50);});
+{ "x1": 625, "y1": 500, "x2": 590, "y2": 400, "id": "needle"}];
 
-// 	d3.selectAll("line").transition()
-// 	.delay(400)
-// 	.duration(600)  
-// 	.attr("x2", function(d,i){ 
-// 		if(d.id == "needle"){ 
-// 			return d.x2 + 150;
-// 		}else{
-// 			return d.x2;
-// 		}
-// 	})  
-// 	.attr("y1", function(d,i){ 
-// 		if(d.id == "graph"){ 
-// 			if(i%2){
-// 				return d.y1 - 50;
-// 			}else{
-// 				return d.y1 - 80;
-// 			}
-// 		}else{
-// 			return d.y1;
-// 		}
-// 	})
-// 	.attr("y2", function(d,i){ 
-// 		if(d.id == "graph"){ 
-// 			if(i%2){
-// 				return d.y2 - 80;
-// 			}else{
-// 				return d.y2 - 50;
-// 			}
-// 		}else{
-// 			return d.y2;
-// 		}
-// 	});
+jsonRect = [
+{ "x": 920, "y": 745, "width": 50, "height": 0, "color" : "#26a69a" },
+{ "x": 1020, "y": 745, "width": 50, "height": 0, "color" : "#adebe7" },
+{ "x": 1120, "y": 745, "width": 50, "height": 0, "color" : "#1e7b75" }];
+	//getting the json request, putting it in data
+	d3.json("http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(), function(error, json) {
+		if (error) return console.warn(error);
+		data = json;
+		console.log(data);
+		visualizeit();
+	});
 
-// 	//trying to put words here
-// 	var texts2 = svgContainer.selectAll("text")
-// 		.data(words)
-// 		.enter()
-// 		.append("text")
-// 		.attr("x", 900)
-// 		.attr("y", function(d,i) { return 100+(i*100); })
-// 		.text( function (d) { return d; })
-// 		.attr("font-family", "sans-serif")
-// 		.attr("font-size", "20px")
-// 		.attr("fill", "black");
+	//doing transitions for the charts
+	d3.selectAll("rect").transition()       
+	.delay(400)
+	.duration(600)    
+	.attr("height",function(d,i){return (i+1)*50;})
+	.attr("y", function(d,i){return d.y-((i+1)*50);});
+
+	d3.selectAll("line").transition()
+	.delay(400)
+	.duration(600)  
+	.attr("x2", function(d,i){ 
+		if(d.id == "needle"){ 
+			return d.x2 + 150;
+		}else{
+			return d.x2;
+		}
+	})  
+	.attr("y1", function(d,i){ 
+		if(d.id == "graph"){ 
+			if(i%2){
+				return d.y1 - 50;
+			}else{
+				return d.y1 - 80;
+			}
+		}else{
+			return d.y1;
+		}
+	})
+	.attr("y2", function(d,i){ 
+		if(d.id == "graph"){ 
+			if(i%2){
+				return d.y2 - 80;
+			}else{
+				return d.y2 - 50;
+			}
+		}else{
+			return d.y2;
+		}
+	});
+
+	//trying to put words here
+	var texts2 = svgContainer.selectAll("text")
+		.data(words)
+		.enter()
+		.append("text")
+		.attr("x", 900)
+		.attr("y", function(d,i) { return 100+(i*100); })
+		.text( function (d) { return d; })
+		.attr("font-family", "sans-serif")
+		.attr("font-size", "20px")
+		.attr("fill", "black");
 
 
-// });
+});
 
 </script>
 
