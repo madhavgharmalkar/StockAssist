@@ -8,8 +8,8 @@ jQuery(document).ready(function($) {
 		})
 		.done(function(data) {
 			console.log(data);
-			#("#good").text(data.positive);
-			#("#bad").text(data.negative);
+			$("#good").text(data.positive);
+			$("#bad").text(data.negative);
 		})
 		.fail(function() {
 			console.log("error");
