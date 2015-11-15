@@ -85,7 +85,9 @@ app.get("/twitter", function(req ,res){
 			lowest = positive;
 		}
 
-		prediction += "\n\nStockAssist is making this prediction with a " + 100*Math.abs(highest-lowest)/highest + "% of confidence";
+		var percent = 100*Math.abs(highest-lowest)/highest;
+
+		prediction += "\n\nStockAssist is making this prediction with a " + Math.round(percent * 100) / 100 + "% of confidence";
 
 		res.send({
 			positive: positive,
