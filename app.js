@@ -41,7 +41,7 @@ app.get("/twitter", function(req ,res){
 	client.get('search/tweets', {q: req.query.q, lang: "en", count: 1000}, function(error, tweets, response){
 		results = [];
 
-		var positive = 0; var negative = 0; var probs = 0;
+		var positive = 0; var negative = 0; var probs = .5;
 		var totalNegative = 0;
 
 		for (var i = 0; i < tweets.statuses.length; i++) {
@@ -52,10 +52,10 @@ app.get("/twitter", function(req ,res){
 
 			if(analyse.score>0){
 				positive += 1;
-				probs += analyse.comparative;
+				probs += analyse.comparative*analyse.score;
 			} else if (analyse.score < 0){
 				negative += 1;
-				probs -= analyse.comparative;
+				probs += analyse.comparative*analyse.score;
 				totalNegative += analyse.comparative;
 			}
 
@@ -74,12 +74,20 @@ app.get("/twitter", function(req ,res){
 			prediction += "Just sit tight and hold on to your stock"
 		} 
 
-		prediction += "%0D%0AStockAssist is making this prediction with a " + 100*probs/(positive + negative) + "% degree of confidence";
+		var highest = 0;
+
+		if(positive>=negative){
+			highest = positive;
+		} else {
+			highest = negative;
+		}
+
+		prediction += "\n\nStockAssist is making this prediction with a " + 100*Math.abs(highest-negative)/highest + "% of confidence";
 
 		res.send({
 			positive: positive,
 			negative: negative,
-			probabilities: (1+totalNegative/negative),
+			probabilities:(probs/(positive+negative)),
 			prediction: prediction
 		});
 	});
