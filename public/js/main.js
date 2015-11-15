@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
 			var myPieChart = new Chart(ctx).Doughnut(data,options);
 			myPieChart.update();
 
-
+			$("#prediction").text(data.prediction);
 			$("#good").text(data.positive);
 			$("#bad").text(data.negative);
 		})

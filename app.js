@@ -53,17 +53,29 @@ app.get("/twitter", function(req ,res){
 				probs += analyse.comparative;
 			} else if (analyse.score < 0){
 				negative += 1;
-				probs += analyse.comparative;
+				probs -= analyse.comparative;
 			}
 
 
 			// console.log(tweets.statuses[i].text.replace(urlreg,""));
 		}
 		// res.send(tweets.statuses);
+
+		var prediction = "";
+
+		if((positive-negative)>(.33	*(positive+negative))){
+			prediction += "You should buy this stock. Current tweets show that people around the world are interested and excited in this porduct.";
+		} else if ((negative-positive)>(.10*(positive+negative))){
+			prediction += "You should sell this stock. Current tweets show that people pessimistic about this company and it's prodcuts.";
+		} else {
+			prediction += "Just sit tight and hold on to your stock"
+		}
+
 		res.send({
 			positive: positive,
 			negative: negative,
-			probabilities: probs/(positive-	negative)
+			probabilities: probs/(positive + negative),
+			prediction: prediction
 		});
 	});
 });
