@@ -1,0 +1,26 @@
+.hundred, html, body {
+	height: 100%;
+
+}
+
+body {
+	margin: 0;
+}
+
+#twoThirds{
+	height: 55%;
+	width: 100%;
+	background-color: #ecf0f1; 
+}
+
+#oneThird{
+	height: 45%;
+	width: 100%;
+	background-color: #bdc3c7;
+}
+.container{
+	position: relative;
+	top: 20%;
+}
+
+

@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-
 <head>
-	<title>StockAssist</title>
+	<title>StockEr</title>
+
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,103 +15,43 @@
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="css/set2.css" />
-		<!--[if IE]>
-  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  		<![endif]-->
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-  	</head>
-
-  	<body>
-  		<div class="container">
-  			<section class="content bgcolor-1">
-  				<h2><img src="StockAssist.png" width="5%"> StockAssist</h2>
-  				<span class="input input--fumi">
-  					<form onsubmit="confirmInput()" autocomplete = "on">
-  						<input class="input__field input__field--fumi" type="text" id="input-23" />
-  						<label class="input__label input__label--fumi" for="input-23">
-  							<i class="fa fa-fw fa fa-search icon icon--fumi"></i>
-  							<span class="input__label-content input__label-content--fumi">Stock Name</span>
-  						</label>
-  					</form>
-  				</span>
-  			</section>
-  		</div><!-- /container -->
-
-  		<script src="js/classie.js"></script>
-
-  	</body>
-
-  	<script>
-  	function confirmInput() {
-  		fname = document.forms[0].fname.value;
-  		d3.selectAll("circle").transition() 
-  		.delay(function(d, i) { return i * 300 })
-  		.duration(600)    
-  		.attr("transform","translate(0,-300)")
-  		.ease("elastic"); 
-  	}
+	<!-- Compiled and minified JavaScript -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script src="js/classie.js"></script>
 
 
-  	(function() {
-			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
-			if (!String.prototype.trim) {
-				(function() {
-					// Make sure we trim BOM and NBSP
-					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-					String.prototype.trim = function() {
-						return this.replace(rtrim, '');
-					};
-				})();
-			}
+</head>
+<body>
+	<div id="twoThirds">
+		<div class="container">
+			<div class="row">
+				<h2><img src="StockAssist.png" width="5%"> StockAssist</h2>
+			</div>
+			<div class="row">
+				<span class="input input--fumi">
+					<input class="input__field input__field--fumi" type="text" id="input-23" />
+					<label class="input__label input__label--fumi" for="input-23">
+						<i class="fa fa-fw fa fa-search icon icon--fumi"></i>
+						<span class="input__label-content input__label-content--fumi">Stock Name</span>
+					</label>
+				</span>
+			</div>
+			<div class="row">
+				<div class="col s12"><a class="waves-effect waves-light btn center" id="click">Madhav</a></div>
+			</div>
+		</div>
+	</div>
+	<div id="oneThird">
+		<div class="container">
+			<div class="row">
+				<div class="col s4"></div>
+				<div class="col s4"></div>
+				<div class="col s4"></div>
+			</div>
+		</div>
+	</div>
 
-			[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-				// in case the input is already filled..
-				if( inputEl.value.trim() !== '' ) {
-					classie.add( inputEl.parentNode, 'input--filled' );
-				}
 
-				// events:
-				inputEl.addEventListener( 'focus', onInputFocus );
-				inputEl.addEventListener( 'blur', onInputBlur );
-			} );
-
-			function onInputFocus( ev ) {
-				classie.add( ev.target.parentNode, 'input--filled' );
-			}
-
-			function onInputBlur( ev ) {
-				if( ev.target.value.trim() === '' ) {
-					classie.remove( ev.target.parentNode, 'input--filled' );
-				}
-			}
-		})();
-
-		var jsonCircles = [
-		{ "x_axis": 300, "y_axis": 500, "radius": 100, "color" : "red" },
-		{ "x_axis": 600, "y_axis": 500, "radius": 100, "color" : "orange"},
-		{ "x_axis": 900, "y_axis": 500, "radius": 100, "color" : "yellow"}];
-
-		var svgContainer = d3.select("body").append("svg")
-		.attr("width", 1500)
-		.attr("height", 500);
-
-		var circles = svgContainer.selectAll("circle")
-		.data(jsonCircles)
-		.enter()
-		.append("circle");
-
-		var circleAttributes = circles
-		.attr("cx", function (d) { return d.x_axis; })
-		.attr("cy", function (d) { return d.y_axis; })
-		.attr("r", function (d) { return d.radius; })
-		.attr("fill-opacity", .7)
-		.style("fill", function(d) { return d.color; });
-
-		d3.selectAll("circle").transition() 
-		.delay(function(d, i) { return i * 300 })
-		.duration(600)    
-		.attr("transform","translate(0,-300)")
-		.ease("elastic"); 
-
-		</script>
+</body>
