@@ -49,6 +49,9 @@
 		</div>
 	</div>
 
+	<h3>Good words: <span id="good"></span></h3>
+	<h3>Bad words: <span id="bad"></span></h3>
+
 </body>
 
 <script>
@@ -147,73 +150,73 @@ var circleAttributes = circles
 .attr("stroke", "black");
 
 var words = ["hello", "there", "you"];
-/*
+
 //what happens when you click the lookup button
-$("#click").click(function(event) {
-	console.log("hello");
+// $("#click").click(function(event) {
+// 	console.log("hello");
 
-	//getting the json request, putting it in data
-	d3.json("http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(), function(error, json) {
-		if (error) return console.warn(error);
-		data = json;
-		console.log(data);
-		visualizeit();
-	});
+// 	//getting the json request, putting it in data
+// 	d3.json("http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(), function(error, json) {
+// 		if (error) return console.warn(error);
+// 		data = json;
+// 		console.log(data);
+// 		visualizeit();
+// 	});
 
-	//doing transitions for the charts
-	d3.selectAll("rect").transition()       
-	.delay(400)
-	.duration(600)    
-	.attr("height",function(d,i){return (i+1)*50;})
-	.attr("y", function(d,i){return d.y-((i+1)*50);});
+// 	//doing transitions for the charts
+// 	d3.selectAll("rect").transition()       
+// 	.delay(400)
+// 	.duration(600)    
+// 	.attr("height",function(d,i){return (i+1)*50;})
+// 	.attr("y", function(d,i){return d.y-((i+1)*50);});
 
-	d3.selectAll("line").transition()
-	.delay(400)
-	.duration(600)  
-	.attr("x2", function(d,i){ 
-		if(d.id == "needle"){ 
-			return d.x2 + 150;
-		}else{
-			return d.x2;
-		}
-	})  
-	.attr("y1", function(d,i){ 
-		if(d.id == "graph"){ 
-			if(i%2){
-				return d.y1 - 50;
-			}else{
-				return d.y1 - 80;
-			}
-		}else{
-			return d.y1;
-		}
-	})
-	.attr("y2", function(d,i){ 
-		if(d.id == "graph"){ 
-			if(i%2){
-				return d.y2 - 80;
-			}else{
-				return d.y2 - 50;
-			}
-		}else{
-			return d.y2;
-		}
-	});
+// 	d3.selectAll("line").transition()
+// 	.delay(400)
+// 	.duration(600)  
+// 	.attr("x2", function(d,i){ 
+// 		if(d.id == "needle"){ 
+// 			return d.x2 + 150;
+// 		}else{
+// 			return d.x2;
+// 		}
+// 	})  
+// 	.attr("y1", function(d,i){ 
+// 		if(d.id == "graph"){ 
+// 			if(i%2){
+// 				return d.y1 - 50;
+// 			}else{
+// 				return d.y1 - 80;
+// 			}
+// 		}else{
+// 			return d.y1;
+// 		}
+// 	})
+// 	.attr("y2", function(d,i){ 
+// 		if(d.id == "graph"){ 
+// 			if(i%2){
+// 				return d.y2 - 80;
+// 			}else{
+// 				return d.y2 - 50;
+// 			}
+// 		}else{
+// 			return d.y2;
+// 		}
+// 	});
 
-	//trying to put words here
-	var texts2 = svgContainer.selectAll("text")
-		.data(words)
-		.enter()
-		.append("text")
-		.attr("x", 900)
-		.attr("y", function(d,i) { return 100+(i*100); })
-		.text( function (d) { return d; })
-		.attr("font-family", "sans-serif")
-		.attr("font-size", "20px")
-		.attr("fill", "black");
+// 	//trying to put words here
+// 	var texts2 = svgContainer.selectAll("text")
+// 		.data(words)
+// 		.enter()
+// 		.append("text")
+// 		.attr("x", 900)
+// 		.attr("y", function(d,i) { return 100+(i*100); })
+// 		.text( function (d) { return d; })
+// 		.attr("font-family", "sans-serif")
+// 		.attr("font-size", "20px")
+// 		.attr("fill", "black");
 
 
-});*/
+// });
 
 </script>
 

@@ -1,4 +1,4 @@
-/*jQuery(document).ready(function($) {
+jQuery(document).ready(function($) {
 	
 
 	$("#click").click(function(event) {
@@ -6,8 +6,9 @@
 			url: "http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(),
 			type: 'GET'
 		})
-		.done(function() {
-			console.log("success");
+		.done(function(data) {
+			#("#good").text(data.positive);
+			#("#bad").text(data.negative);
 		})
 		.fail(function() {
 			console.log("error");
@@ -16,8 +17,10 @@
 			console.log("complete");
 		});
 
-		$("#title").transition({top: "1vh"});
-		$("#input").transition({top: "-6vh"});
+		// $("#title").transition({top: "1vh"});
+		// $("#input").transition({top: "-6vh"});
+
+
 
 
 
@@ -25,7 +28,7 @@
 
 
 
-});*/
+});
 
 
 
