@@ -1,0 +1,34 @@
+.hundred, html, body {
+	height: 100%;
+
+}
+
+body {
+	margin: 0;
+}
+
+#twoThirds{
+	height: 450px;
+	width: 100%;
+	background-color: #ecf0f1; 
+}
+
+#oneThird{
+	height: 45%;
+	width: 100%;
+	background-color: #bdc3c7;
+}
+#title{
+	position: relative;
+	top: 20vh;
+}
+
+#input {
+	top: 15vh;
+	position: relative;
+}
+
+#click_row {
+
+}
+
