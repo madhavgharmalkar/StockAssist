@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/madhavgharmalkar/StalkAssist#readme",
   "dependencies": {
+    "connect": "^3.4.0",
     "express": "^4.13.3",
     "twitter": "^1.2.5"
   }
