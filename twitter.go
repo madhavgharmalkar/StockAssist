@@ -6,6 +6,7 @@ import (
 	"github.com/ChimeraCoder/anaconda"
 	"net/http"
 	"net/url"
+	"regexp"
 )
 
 func createTwitterAPI() *anaconda.TwitterApi {
@@ -61,6 +62,8 @@ func jsonTweets(tweets []anaconda.Tweet) http.HandlerFunc {
 func twitterHandler(api *anaconda.TwitterApi) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 
+		re := regexp.MustCompile("(http|ftp|https)://([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?")
+
 		query := r.URL.Query().Get("q")
 
 		v := url.Values{}
@@ -77,7 +80,7 @@ func twitterHandler(api *anaconda.TwitterApi) http.HandlerFunc {
 		var results []string
 
 		for _, tweet := range result.Statuses {
-			results = append(results, tweet.Text)
+			results = append(results, re.ReplaceAllLiteralString(tweet.Text, ""))
 		}
 
 		msg, err := json.Marshal(results)

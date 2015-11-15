@@ -1,0 +1,23 @@
+{
+  "name": "stockassist",
+  "version": "1.0.0",
+  "description": "Using Twitter Data to extrapolate stock market trends",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madhavgharmalkar/StalkAssist.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madhavgharmalkar/StalkAssist/issues"
+  },
+  "homepage": "https://github.com/madhavgharmalkar/StalkAssist#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "twitter": "^1.2.5"
+  }
+}

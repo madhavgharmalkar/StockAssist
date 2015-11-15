@@ -1,15 +1,12 @@
 var express = require('express');
 var app = express();
 
-var port = process.env.PORT || 3000;
+//Specify a port
+var port = process.env.port || 3000;
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+//Serve up files in public folder
+app.use('/', express.static(__dirname + '/public'));
 
-var server = app.listen(port, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+//Start up the website
+app.listen(port);
+console.log('Listening on port: ', port);

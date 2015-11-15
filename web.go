@@ -7,21 +7,21 @@ import (
 	_ "html/template"
 	"log"
 	"net/http"
-	"os"
+	_ "os"
 )
 
 func main() {
 	r := mux.NewRouter()
 	api := createTwitterAPI()
 
-	port := os.Getenv("HTTP_PLATFORM_PORT")
+	//port := os.Getenv("HTTP_PLATFORM_PORT")
 
 	r.HandleFunc("/twitter", twitterHandler(api))
 	r.HandleFunc("/", indexHandler)
 	http.Handle("/", r)
 
-	log.Println("Server listening at localhost:" + port)
-	http.ListenAndServe(":"+port, nil)
+	log.Println("Server listening at localhost:3000")
+	http.ListenAndServe(":3000", nil)
 
 }
 
