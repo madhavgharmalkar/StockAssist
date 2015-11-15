@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+/*jQuery(document).ready(function($) {
 	
 
 	$("#click").click(function(event) {
@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
 
 
 
-});
+});*/
 
 
 
