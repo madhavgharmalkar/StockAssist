@@ -30,14 +30,14 @@ jQuery(document).ready(function($) {
 			var data = [
 			{
 				value: data.positive,
-				color: "#2c3e50",
-				highlight: "#34495e",
+				color: "#1e7b75",
+				highlight: "#26a69a",
 				label: "positive"
 			},
 			{
 				value: data.negative,
-				color: "#c0392b",
-				highlight: "#e74c3c",
+				color: "#808080",
+				highlight: "#b3b3b3",
 				label: "negative"	
 			}
 			]
