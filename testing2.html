@@ -2,6 +2,8 @@
 <head>
 	<title>StockEr</title>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" href="css/materialize.css">
@@ -20,40 +22,36 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script src="js/classie.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-
+	<script src="js/stockjson.js"></script>
+	<script type="text/javascript" src="js/jquery.transit.js"></script>
 
 </head>
 <body>
 	<div id="twoThirds">
 		<div class="container">
-			<div class="row">
+			<div class="row" id="title">
 				<h2><img src="StockAssist.png" width="5%"> StockAssist</h2>
 			</div>
-			<div class="row">
-				<span class="input input--fumi">
-					<input class="input__field input__field--fumi" type="text" id="input-23" />
-					<label class="input__label input__label--fumi" for="input-23">
-						<i class="fa fa-fw fa fa-search icon icon--fumi"></i>
-						<span class="input__label-content input__label-content--fumi">Stock Name</span>
-					</label>
-				</span>
+			<div class="row" id="input">
+				<form>
+					<span class="input input--fumi">
+						<input class="input__field input__field--fumi" type="text" id="input-23" />
+						<label class="input__label input__label--fumi" for="input-23">
+							<i class="fa fa-fw fa fa-search icon icon--fumi"></i>
+							<span class="input__label-content input__label-content--fumi">Stock Name</span>
+						</label>
+					</span>
+				</form>
 			</div>
-			<div class="row">
-				<div class="col s12"><a class="waves-effect waves-light btn center" id="click">Madhav</a></div>
-			</div>
-		</div>
-	</div>
-	<div id="oneThird">
-		<div class="container">
-			<div class="row">
-				<div class="col s4"></div>
-				<div class="col s4"></div>
-				<div class="col s4"></div>
+			<div class="row" id="click_row">
+				<div class="col s12"><a class="waves-effect waves-light btn center" id="click">Lookup</a></div>
 			</div>
 		</div>
 	</div>
-
 
 </body>
+
+
+
+
+

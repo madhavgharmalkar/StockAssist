@@ -1,0 +1,25 @@
+<script>
+var jsonLines = [
+{ "x1": 50, "y1": 50, "x2": 50, "y2": 350},
+{ "x1": 50, "y1": 350, "x2": 350, "y2": 350},
+{ "x1": 850, "y1": 550, "x2": 850, "y2": 750},
+{ "x1": 850, "y1": 750, "x2": 1200, "y2": 750}];
+
+var svgContainer = d3.select("body").append("svg")
+.attr("width", 1300)
+.attr("height", 800);
+
+var lines = svgContainer.selectAll("line")
+.data(jsonLines)
+.enter()
+.append("line");
+
+var lineAttributes = lines
+.attr("x1", function (d) { return d.x1; })
+.attr("y1", function (d) { return d.y1; })
+.attr("x2", function (d) { return d.x2; })
+.attr("y2", function (d) { return d.y2; })
+.attr("stroke-width", 0.5)
+.attr("stroke", "black");
+
+</script>

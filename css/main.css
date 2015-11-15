@@ -8,7 +8,7 @@ body {
 }
 
 #twoThirds{
-	height: 55%;
+	height: 450px;
 	width: 100%;
 	background-color: #ecf0f1; 
 }
@@ -18,9 +18,17 @@ body {
 	width: 100%;
 	background-color: #bdc3c7;
 }
-.container{
+#title{
 	position: relative;
-	top: 20%;
+	top: 20vh;
 }
 
+#input {
+	top: 15vh;
+	position: relative;
+}
+
+#click_row {
+
+}
 

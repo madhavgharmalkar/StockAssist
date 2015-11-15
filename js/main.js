@@ -3,8 +3,9 @@ jQuery(document).ready(function($) {
 
 	$("#click").click(function(event) {
 		$.ajax({
-			url: window.location + "/twitter?q="+$("#stock").val(),
+			url: "http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(),
 			type: 'GET',
+			datatype, "JSONP"
 		})
 		.done(function() {
 			console.log("success");
@@ -15,9 +16,18 @@ jQuery(document).ready(function($) {
 		.always(function() {
 			console.log("complete");
 		});
+
+		$("#title").transition({top: "1vh"});
+		$("#input").transition({top: "-6vh"});
+
+
+
 	});
 
+
+
 });
+
 
 
 
