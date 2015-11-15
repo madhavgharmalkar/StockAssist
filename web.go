@@ -1,19 +1,20 @@
 package main
 
 import (
-	//"fmt"
+	"fmt"
 	_ "github.com/ChimeraCoder/anaconda"
 	"github.com/gorilla/mux"
-	"html/template"
+	_ "html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
 	r := mux.NewRouter()
 	api := createTwitterAPI()
 
-	port := "3000"
+	port := os.Getenv("HTTP_PLATFORM_PORT")
 
 	r.HandleFunc("/twitter", twitterHandler(api))
 	r.HandleFunc("/", indexHandler)
@@ -25,17 +26,19 @@ func main() {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	templ, err := template.ParseFiles("templates/index.html")
-	if err != nil {
-		handleWebErr(w, err)
-		return
-	}
+	// templ, err := template.ParseFiles("templates/index.html")
+	// if err != nil {
+	// 	handleWebErr(w, err)
+	// 	return
+	// }
 
-	err = templ.Execute(w, nil)
-	if err != nil {
-		handleWebErr(w, err)
-		return
-	}
+	// err = templ.Execute(w, nil)
+	// if err != nil {
+	// 	handleWebErr(w, err)
+	// 	return
+	// }
+
+	fmt.Fprint(w, "Madhav is awesome")
 
 }
 
