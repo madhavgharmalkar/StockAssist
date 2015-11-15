@@ -18,8 +18,8 @@ jQuery(document).ready(function($) {
 			.transition({display: "block"})
 			.transition({height: "50vh"});
 
-			$("#left-bottom").transition({display: "block"});
-			$("#right-bottom").transition({display: "block"});
+			$("#left-bottom").transition({display: "block", delay: 1000});
+			$("#right-bottom").transition({display: "block", delay: 1000});
 
 
 			console.log(data);

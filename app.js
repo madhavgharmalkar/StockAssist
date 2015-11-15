@@ -42,11 +42,13 @@ app.get("/twitter", function(req ,res){
 		results = [];
 
 		var positive = 0; var negative = 0; var probs = 0;
+		var totalNegative = 0;
 
 		for (var i = 0; i < tweets.statuses.length; i++) {
 			var text = tweets.statuses[i].text;
 			var noURL = text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, "");
 			var analyse = sentiment(noURL);
+
 
 			if(analyse.score>0){
 				positive += 1;
@@ -54,6 +56,7 @@ app.get("/twitter", function(req ,res){
 			} else if (analyse.score < 0){
 				negative += 1;
 				probs -= analyse.comparative;
+				totalNegative += analyse.comparative;
 			}
 
 
@@ -71,12 +74,12 @@ app.get("/twitter", function(req ,res){
 			prediction += "Just sit tight and hold on to your stock"
 		} 
 
-		prediction += "\nStockAssist is making this prediction with a " + 100*probs/(positive + negative) + "% degree of confidence";
+		prediction += "%0D%0AStockAssist is making this prediction with a " + 100*probs/(positive + negative) + "% degree of confidence";
 
 		res.send({
 			positive: positive,
 			negative: negative,
-			probabilities: probs/(positive + negative),
+			probabilities: (1+totalNegative/negative),
 			prediction: prediction
 		});
 	});
