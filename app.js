@@ -75,14 +75,17 @@ app.get("/twitter", function(req ,res){
 		} 
 
 		var highest = 0;
+		var lowest = 0;
 
 		if(positive>=negative){
 			highest = positive;
+			lowest = negative;
 		} else {
 			highest = negative;
+			lowest = positive;
 		}
 
-		prediction += "\n\nStockAssist is making this prediction with a " + 100*Math.abs(highest-negative)/highest + "% of confidence";
+		prediction += "\n\nStockAssist is making this prediction with a " + 100*Math.abs(highest-lowest)/highest + "% of confidence";
 
 		res.send({
 			positive: positive,
