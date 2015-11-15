@@ -1,7 +1,7 @@
 var express = require('express');
 var http = require('http');
 var regex = require('regex');
-var request = require('request');
+// var request = require('request');
 var sentiment = require('sentiment');
 var app = express();
 
