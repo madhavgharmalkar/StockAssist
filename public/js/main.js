@@ -7,6 +7,7 @@ jQuery(document).ready(function($) {
 			type: 'GET'
 		})
 		.done(function(data) {
+			console.log(data);
 			#("#good").text(data.positive);
 			#("#bad").text(data.negative);
 		})
