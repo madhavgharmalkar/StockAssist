@@ -8,15 +8,14 @@ body {
 }
 
 #twoThirds{
-	height: 450px;
+	height: 50vh;
 	width: 100%;
 	background-color: #ecf0f1; 
 }
 
 #oneThird{
-	height: 45%;
-	width: 100%;
-	background-color: #bdc3c7;
+	height: 50vh;
+	width: 100%;	
 }
 .container{
 	position: relative;

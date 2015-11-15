@@ -24,6 +24,7 @@
 	<script src="js/classie.js"></script>
 	<script src="js/stockjson.js"></script>
 	<script type="text/javascript" src="js/jquery.transit.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 
 </head>
 <body>
@@ -49,107 +50,125 @@
 		</div>
 	</div>
 
-	<h3>Good words: <span id="good"></span></h3>
-	<h3>Bad words: <span id="bad"></span></h3>
+	<div id="oneThird">
+		<!-- <h4 class="center">Data</h4> -->
+		<div class="container">
+			
+			<row class="col s4">
+				<canvas id="leftChart" left="100%" right="100%">
+					
+				</canvas>
+
+
+			</row>
+			<row class="col s4">
+
+			</row>
+			<row class="col s4"></row>
+
+		</div>
+	</div>
+
+
 
 </body>
 
 <script>
 //all the json data
-var jsonLines = [
-{ "x1": 50, "y1": 50, "x2": 50, "y2": 350, "id": ""},
-{ "x1": 50, "y1": 350, "x2": 350, "y2": 350, "id": ""},
-{ "x1": 900, "y1": 550, "x2": 900, "y2": 750, "id": ""},
-{ "x1": 900, "y1": 750, "x2": 1200, "y2": 750, "id": ""},
+// var jsonLines = [
+// { "x1": 50, "y1": 50, "x2": 50, "y2": 350, "id": ""},
+// { "x1": 50, "y1": 350, "x2": 350, "y2": 350, "id": ""},
+// { "x1": 900, "y1": 550, "x2": 900, "y2": 750, "id": ""},
+// { "x1": 900, "y1": 750, "x2": 1200, "y2": 750, "id": ""},
 
-{ "x1": 50, "y1": 350, "x2": 110, "y2": 350, "id": "graph"},
-{ "x1": 110, "y1": 350, "x2": 170, "y2": 350, "id": "graph"},
-{ "x1": 170, "y1": 350, "x2": 230, "y2": 350, "id": "graph"},
-{ "x1": 230, "y1": 350, "x2": 290, "y2": 350, "id": "graph"},
-{ "x1": 290, "y1": 350, "x2": 350, "y2": 350, "id": "graph"},
+// { "x1": 50, "y1": 350, "x2": 110, "y2": 350, "id": "graph"},
+// { "x1": 110, "y1": 350, "x2": 170, "y2": 350, "id": "graph"},
+// { "x1": 170, "y1": 350, "x2": 230, "y2": 350, "id": "graph"},
+// { "x1": 230, "y1": 350, "x2": 290, "y2": 350, "id": "graph"},
+// { "x1": 290, "y1": 350, "x2": 350, "y2": 350, "id": "graph"},
 
-{ "x1": 625, "y1": 500, "x2": 500, "y2": 300, "id": "needle"}];
+// { "x1": 625, "y1": 500, "x2": 500, "y2": 300, "id": "needle"}];
 
-var jsonRect = [
-{ "x": 920, "y": 750, "width": 30, "height": 0, "color" : "red" },
-{ "x": 1020, "y": 750, "width": 30, "height": 0, "color" : "red" },
-{ "x": 1120, "y": 750, "width": 30, "height": 0, "color" : "red" }];
+// var jsonRect = [
+// { "x": 920, "y": 750, "width": 30, "height": 0, "color" : "red" },
+// { "x": 1020, "y": 750, "width": 30, "height": 0, "color" : "red" },
+// { "x": 1120, "y": 750, "width": 30, "height": 0, "color" : "red" }];
 
-var jsonText = [
-{ "x": 100, "y": 400, "text": "Stock History"},
-{ "x": 920, "y": 780, "text": "Good"},
-{ "x": 1020, "y": 780, "text": "Neutral"},
-{ "x": 1120, "y": 780, "text": "Bad"},
-{ "x": 500, "y": 500, "text": "Buy"},
-{ "x": 700, "y": 500, "text": "Sell"},
-{ "x": 900, "y": 100, "text": "Good Words"},
-{ "x": 200, "y": 500, "text": "Bad Words"}];
+// var jsonText = [
+// { "x": 100, "y": 400, "text": "Stock History"},
+// { "x": 920, "y": 780, "text": "Good"},
+// { "x": 1020, "y": 780, "text": "Neutral"},
+// { "x": 1120, "y": 780, "text": "Bad"},
+// { "x": 500, "y": 500, "text": "Buy"},
+// { "x": 700, "y": 500, "text": "Sell"},
+// { "x": 900, "y": 100, "text": "Good Words"},
+// { "x": 200, "y": 500, "text": "Bad Words"}];
 
-var jsonCircles = [
-{ "x_axis": 615, "y_axis": 420, "radius": 150}];
+// var jsonCircles = [
+// { "x_axis": 615, "y_axis": 420, "radius": 150}];
 
 
-//creating the svg and binding everything to it
-var data;
+// //creating the svg and binding everything to it
+// var data;
 
-var svgContainer = d3.select("body").append("svg")
-.attr("width", 1300)
-.attr("height", 800)
-.attr("id","hi");
+// var svgContainer = d3.select("body").append("svg")
+// .attr("width", 1300)
+// .attr("height", 800)
+// .attr("id","hi");
 
-var lines = svgContainer.selectAll("line")
-.data(jsonLines)
-.enter()
-.append("line");
+// var lines = svgContainer.selectAll("line")
+// .data(jsonLines)
+// .enter()
+// .append("line");
 
-var rects = svgContainer.selectAll("rect")
-.data(jsonRect)
-.enter()
-.append("rect");
+// var rects = svgContainer.selectAll("rect")
+// .data(jsonRect)
+// .enter()
+// .append("rect");
 
-var texts = svgContainer.selectAll("text")
-.data(jsonText)
-.enter()
-.append("text");
+// var texts = svgContainer.selectAll("text")
+// .data(jsonText)
+// .enter()
+// .append("text");
 
-var circles = svgContainer.selectAll("circle")
-.data(jsonCircles)
-.enter()
-.append("circle");
+// var circles = svgContainer.selectAll("circle")
+// .data(jsonCircles)
+// .enter()
+// .append("circle");
 
-//loading all the attributes to the objects
-var lineAttributes = lines
-.attr("x1", function (d) { return d.x1; })
-.attr("y1", function (d) { return d.y1; })
-.attr("x2", function (d) { return d.x2; })
-.attr("y2", function (d) { return d.y2; })
-.attr("stroke-width", 2)
-.attr("stroke", "black");
+// //loading all the attributes to the objects
+// var lineAttributes = lines
+// .attr("x1", function (d) { return d.x1; })
+// .attr("y1", function (d) { return d.y1; })
+// .attr("x2", function (d) { return d.x2; })
+// .attr("y2", function (d) { return d.y2; })
+// .attr("stroke-width", 2)
+// .attr("stroke", "black");
 
-var rectAttributes = rects
-.attr("x", function (d) { return d.x; })
-.attr("y", function (d) { return d.y; })
-.attr("width", function (d) { return d.width; })
-.attr("height", function (d) { return d.height; })
-.attr("fill", function (d) { return d.color; });
+// var rectAttributes = rects
+// .attr("x", function (d) { return d.x; })
+// .attr("y", function (d) { return d.y; })
+// .attr("width", function (d) { return d.width; })
+// .attr("height", function (d) { return d.height; })
+// .attr("fill", function (d) { return d.color; });
 
-var textLabels = texts
-.attr("x", function(d) { return d.x; })
-.attr("y", function(d) { return d.y; })
-.text( function (d) { return d.text; })
-.attr("font-family", "sans-serif")
-.attr("font-size", "20px")
-.attr("fill", "black");
+// var textLabels = texts
+// .attr("x", function(d) { return d.x; })
+// .attr("y", function(d) { return d.y; })
+// .text( function (d) { return d.text; })
+// .attr("font-family", "sans-serif")
+// .attr("font-size", "20px")
+// .attr("fill", "black");
 
-var circleAttributes = circles
-.attr("cx", function (d) { return d.x_axis; })
-.attr("cy", function (d) { return d.y_axis; })
-.attr("r", function (d) { return d.radius; })
-.attr("fill-opacity", 0)
-.attr("stroke-width", 2)
-.attr("stroke", "black");
+// var circleAttributes = circles
+// .attr("cx", function (d) { return d.x_axis; })
+// .attr("cy", function (d) { return d.y_axis; })
+// .attr("r", function (d) { return d.radius; })
+// .attr("fill-opacity", 0)
+// .attr("stroke-width", 2)
+// .attr("stroke", "black");
 
-var words = ["hello", "there", "you"];
+// var words = ["hello", "there", "you"];
 
 //what happens when you click the lookup button
 // $("#click").click(function(event) {
