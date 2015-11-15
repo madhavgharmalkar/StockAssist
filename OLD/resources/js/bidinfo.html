@@ -1,0 +1,16 @@
+<!doctype html>
+
+    socket = io();
+    document.getElementById("placeBidButton").onclick = function() {
+        socket.emit('new bid', document.getElementById("dollarAmount").value);
+    };
+    socket.on('new bid', function(msg){
+        var bidList = document.getElementById("bidHistory");
+        var _element = document.createElement("div");
+        _element.className = "bidPrice";
+        _element.style.backgroundColor = (cards[id].bidHistory.length % 2 == 0) ? "rgb(255, 255, 255)" : "rgb(230, 230, 230)";
+        _element.appendChild(document.createTextNode(parseFloat(document.getElementById("dollarAmount").value).formatCurrency()));
+        bidList.insertBefore(_element, bidList.firstChild);
+        cards[id].bidHistory[cards[id].bidHistory.length] = msg;
+        document.getElementById("dollarAmount").value = cards[id].calculateDefaultBid();
+    });
