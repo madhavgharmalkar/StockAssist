@@ -3,9 +3,7 @@ jQuery(document).ready(function($) {
 
 	var ctx = document.getElementById("leftChart").getContext("2d");
 
-	$("#searchform").submit(function(event) {
-
-		event.preventDefault();
+	function sendData(){
 
 		$.ajax({
 			url: "http://stockassist.azurewebsites.net/twitter?q="+$("#input-23").val(),
@@ -61,11 +59,16 @@ jQuery(document).ready(function($) {
 
 		// $("#title").transition({top: "1vh"});
 		// $("#input").transition({top: "-6vh"});
+	}
 
+	$("#input-23").keydown(function(e) {
+		if (e.keyCode == 13) {
+			sendData();
+		}
+	});
 
-
-
-
+	$("#click").click(function(event) {
+		sendData();
 	});
 
 
