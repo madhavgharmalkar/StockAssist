@@ -63,7 +63,9 @@ jQuery(document).ready(function($) {
 
 	$("#input-23").keydown(function(e) {
 		if (e.keyCode == 13) {
+			console.log("sent");
 			sendData();
+
 		}
 	});
 
