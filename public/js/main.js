@@ -3,7 +3,9 @@ jQuery(document).ready(function($) {
 
 	var ctx = document.getElementById("leftChart").getContext("2d");
 
-	$("#click").click(function(event) {
+	$("#searchform").submit(function(event) {
+
+		event.preventDefault();
 
 		$.ajax({
 			url: "http://stockassist.azurewebsites.net/twitter?q="+$("#input-23").val(),

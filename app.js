@@ -44,6 +44,11 @@ app.get("/twitter", function(req ,res){
 		var positive = 0; var negative = 0; var probs = .5;
 		var totalNegative = 0;
 
+		//azure analysis on the text; commented out because of network traffic issues
+		var url = "https://ussouthcentral.services.azureml.net/workspaces/<workspace id>/services/<service id>/execute?api-version=2.0&details=true";
+		var apiKEY = "2tDWLDZbntuvPD84T9F36pffJNeJJ2FkXJuBVW1YoCOiZ91lrsqqRVV2hlKzxsdqfmNqdXCzlLMTVQa+OQBkQA==";
+
+
 		for (var i = 0; i < tweets.statuses.length; i++) {
 			var text = tweets.statuses[i].text;
 			var noURL = text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, "");
@@ -56,7 +61,7 @@ app.get("/twitter", function(req ,res){
 			} else if (analyse.score < 0){
 				negative += 1;
 				probs += analyse.comparative*analyse.score;
-				totalNegative += analyse.comparative;
+				totalNegative -= analyse.comparative;
 			}
 
 
@@ -67,11 +72,11 @@ app.get("/twitter", function(req ,res){
 		var prediction = "";
 
 		if((positive-negative)>(.33	*(positive+negative))){
-			prediction += "You should buy this stock. Current tweets show that people around the world are interested and excited in this company and its products.";
+			prediction += "You should buy this stock. Current tweets show that people around the world are interested and excited in this company and its products. ";
 		} else if ((negative-positive)>(.10*(positive+negative))){
-			prediction += "You should sell this stock. Current tweets show that people pessimistic about this company and it's products.";
+			prediction += "You should sell this stock. Current tweets show that people pessimistic about this company and it's products. ";
 		} else {
-			prediction += "Just sit tight and hold on to your stock"
+			prediction += "Just sit tight and hold on to your stock. "
 		} 
 
 		var highest = 0;
@@ -87,7 +92,7 @@ app.get("/twitter", function(req ,res){
 
 		var percent = 100*Math.abs(highest-lowest)/highest;
 
-		prediction += "\n\nStockAssist is making this prediction with a " + Math.round(percent * 100) / 100 + "% of confidence";
+		prediction += "\n\nStockAssist is making this prediction with a " + Math.round(percent * 100) / 100 + "% degree of confidence";
 
 		res.send({
 			positive: positive,

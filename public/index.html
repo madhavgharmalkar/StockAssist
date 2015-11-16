@@ -10,7 +10,7 @@
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
-<link rel="shortcut icon" href="StockAssist.png" />
+	<link rel="shortcut icon" href="StockAssist.png" />
 
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,11 +32,12 @@
 <body>
 	<div id="twoThirds">
 		<div class="container">
-			<div class="row" id="title">
-				<h2><img src="StockAssist.png" width="5%"> StockAssist</h2>
-			</div>
-			<div class="row" id="input">
-				<form>
+			<form id="searchform">
+				<div class="row" id="title">
+					<h2><img src="StockAssist.png" width="5%"> StockAssist</h2>
+				</div>
+				<div class="row" id="input">
+					
 					<span class="input input--fumi">
 						<input class="input__field input__field--fumi" type="text" id="input-23" />
 						<label class="input__label input__label--fumi" for="input-23">
@@ -44,11 +45,14 @@
 							<span class="input__label-content input__label-content--fumi">Stock Name</span>
 						</label>
 					</span>
-				</form>
-			</div>
-			<div class="row" id="click_row">
-				<div class="col s12"><a class="waves-effect waves-light btn center" id="click">Lookup</a></div>
-			</div>
+					
+				</div>
+				<div class="row" id="click_row">
+					<button class="btn waves-effect waves-light" type="submit" id="click">Lookup
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
 
@@ -57,12 +61,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col s4" id="left-bottom">
-					<h5 class="left-align">Postivie / Negative</h5>
+					<h5 class="left-align">Negative / Positive</h5>
 					<canvas id="leftChart" left="100%" right="100%">
 					</canvas>
 				</div>
 				<div class="col s8" id="right-bottom">
-				<h5 class="left-align">Prediction</h5>
+					<h5 class="left-align">Prediction</h5>
 					<p class="left-align" id="prediction">
 						
 					</p>
@@ -257,7 +261,7 @@ jsonRect = [
 });
 
 </script>
- -->
+-->
 
 
 
