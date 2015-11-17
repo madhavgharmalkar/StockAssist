@@ -45,6 +45,7 @@ jQuery(document).ready(function($) {
 
 
 				myPieChart = new Chart(ctx).Doughnut(data,options);
+				open = true;
 
 
 			} else {
