@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 			$("#right-bottom").transition({display: "block", delay: 1000});
 
 			var options = {};
-			var data = [
+			var datas = [
 			{
 				value: data.positive,
 				color: "#1e7b75",
@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
 			}
 
 
-			myPieChart = new Chart(ctx).Doughnut(data,options);
+			myPieChart = new Chart(ctx).Doughnut(datas,options);
 
 			// console.log(data);
 
