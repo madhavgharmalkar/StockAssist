@@ -16,42 +16,37 @@ jQuery(document).ready(function($) {
 		})
 		.done(function(data) {
 
+			$("#twoThirds")
+			.transition({height: "50vh"});
+			$("#oneThird")
+			.transition({display: "block"})
+			.transition({height: "50vh"});
 
-			if(!open){
-				$("#twoThirds")
-				.transition({height: "50vh"});
-				$("#oneThird")
-				.transition({display: "block"})
-				.transition({height: "50vh"});
+			$("#left-bottom").transition({display: "block", delay: 1000});
+			$("#right-bottom").transition({display: "block", delay: 1000});
 
-				$("#left-bottom").transition({display: "block", delay: 1000});
-				$("#right-bottom").transition({display: "block", delay: 1000});
-
-				var options = {};
-				var data = [
-				{
-					value: data.positive,
-					color: "#1e7b75",
-					highlight: "#26a69a",
-					label: "positive"
-				},
-				{
-					value: data.negative,
-					color: "#808080",
-					highlight: "#b3b3b3",
-					label: "negative"	
-				}
-				]
-
-
-				myPieChart = new Chart(ctx).Doughnut(data,options);
-				open = true;
-
-
-			} else {
-				myPieChart.segments[0].value = data.positive;
-				myPieChart.segments[1].value = data.negative;
+			var options = {};
+			var data = [
+			{
+				value: data.positive,
+				color: "#1e7b75",
+				highlight: "#26a69a",
+				label: "positive"
+			},
+			{
+				value: data.negative,
+				color: "#808080",
+				highlight: "#b3b3b3",
+				label: "negative"	
 			}
+			]
+
+			if(myPieChart!=null){
+				myPieChart.destroy();
+			}
+
+
+			myPieChart = new Chart(ctx).Doughnut(data,options);
 
 			// console.log(data);
 
