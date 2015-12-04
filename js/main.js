@@ -3,7 +3,7 @@
 
 	$("#click").click(function(event) {
 		$.ajax({
-			url: "http://stockassist.azurewebsites.net/twitter?q="+$("#stock").val(),
+			url: "http://stockassist.azurewebsites.net/twitter?q="+encodeURIComponent($("#stock").val()),
 			type: 'GET'
 		})
 		.done(function() {
