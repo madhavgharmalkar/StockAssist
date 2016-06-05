@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 	function sendData(){
 
 		$.ajax({
-			url: "http://stockassist.azurewebsites.net/twitter?q="+$("#input-23").val(),
+			url: "/twitter?q="+$("#input-23").val(),
 			type: 'GET'
 		})
 		.done(function(data) {
